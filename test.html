@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+
+<head>
+	<title>Bar Chart</title>
+	<script src="chart/dist/Chart.min.js"></script>
+	<script src="chart/utils.js"></script>
+	<style>
+	canvas {
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+	}
+	</style>
+</head>
+
+<body>
+	<div id="container" style="width: 100%;">
+		<canvas id="canvas"></canvas>
+	</div>
+	
+	<script>
+		var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+		var color = Chart.helpers.color;
+		var barChartData = {
+			labels: ['Strategik', 'Kewangan', 'Operasi', 'Peraturan/Perundangan', 'Reputasi', 'Projek Utama'],
+			datasets: [{
+				label: 'Data',
+				backgroundColor: [color(window.chartColors.blue).alpha(0.5).rgbString(), color(window.chartColors.red).alpha(0.5).rgbString(), color(window.chartColors.yellow).alpha(0.5).rgbString(),color(window.chartColors.orange).alpha(0.5).rgbString(), color(window.chartColors.purple).alpha(0.5).rgbString(),color(window.chartColors.gray).alpha(0.5).rgbString()],
+			
+
+
+			borderColor: window.chartColors.black,
+				borderWidth: 1,
+				
+				
+				data: [4,3,2,1,4,10]
+			
+			}]
+
+		};
+
+		window.onload = function() {
+			var ctx = document.getElementById('canvas').getContext('2d');
+			window.myBar = new Chart(ctx, {
+				type: 'bar',
+			
+				data: barChartData,
+				options: {
+					responsive: true,
+					
+					legend: {
+						position: 'top',
+					},
+					title: {
+						display: true,
+						text: 'Tahap Risiko'
+					},
+					
+					
+					 scales: {
+            yAxes: [{
+                ticks: {
+                    suggestedMin: 0,
+                    
+                }
+            }]
+        }
+					
+					
+					
+					
+					
+				}
+			});
+
+		};
+
+		
+
+		
+	</script>
+</body>
+
+</html>
